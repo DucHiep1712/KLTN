@@ -1,20 +1,16 @@
-import React, { useRef } from "react";
-import PropTypes from "prop-types";
-
-import { ImageConfig } from "@/config/ImageConfig";
 import uploadImg from "@/assets/cloud-upload-regular-240.png";
 import { Button } from "@/components/ui/button";
+import { ImageConfig } from "@/config/ImageConfig";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import PropTypes from "prop-types";
+import React, { useRef } from "react";
 import { FileUploader } from "react-drag-drop-files";
 
 export default function DragnDrop(props) {
-  console.log(props.fileList);
   const handleFileChange = (file) => {
     if (file) {
       const updatedList = [...props.fileList, file];
-      console.log(updatedList);
       props.setFileList(updatedList);
-      console.log(file.type.split("/")[1]);
     }
   };
 
@@ -24,7 +20,7 @@ export default function DragnDrop(props) {
     props.setFileList(updatedList);
   };
 
-  const fileTypes = ["pdf", "docx", "txt"];
+  const fileTypes = ["pdf", "docx", "txt", "doc"];
 
   return (
     <>
@@ -58,7 +54,7 @@ export default function DragnDrop(props) {
                   alt=""
                 />
                 <div className="flex flex-col justify-between w-full">
-                  <p className="text-[.96rem] max-w-[86%] whitespace-nowrap text-ellipsis overflow-hidden">
+                  <p className="text-[.96rem] max-w-48 whitespace-nowrap text-ellipsis overflow-hidden">
                     {item.name}
                   </p>
                   <p className="text-sm font-semibold">
